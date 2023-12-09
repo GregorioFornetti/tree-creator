@@ -1,10 +1,17 @@
 
 #container {
-    display: flex;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
+}
+
+#world {
+    width: 200vw;
+    height: 200vh;
+
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #box {
