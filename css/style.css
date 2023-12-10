@@ -1,4 +1,12 @@
 
+:root {
+    --tree-row-gap: 100px;
+    --tree-col-gap: 80px;
+    --tree-col-size: 50px;
+    --line-size: 2px;
+    --line-color: red;
+}
+
 #container {
     overflow: hidden;
     width: 100vw;
@@ -26,9 +34,10 @@
 
 #tree {
     display: grid;
-    grid-template-columns: repeat(4, 50px);
-    row-gap: 200px;
-    column-gap: 80px;
+    grid-template-columns: repeat(4, var(--tree-col-size));
+    grid-template-rows: repeat(2, calc(2 * var(--tree-col-size) + var(--tree-col-gap)));
+    row-gap: var(--tree-row-gap);
+    column-gap: var(--tree-col-gap);
 }
 
 .node {
@@ -49,4 +58,62 @@
 #node3 {
     grid-row: 2;
     grid-column: 3 / 5;
+}
+
+
+
+/* Test lines */
+#lines {
+    position: relative;
+    display: flex;
+    padding-top: calc(2 * var(--tree-col-size) + var(--tree-col-gap));
+    gap: calc(2 * var(--tree-col-size) + var(--tree-col-gap));
+    flex-wrap: wrap;
+}
+
+.line-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, var(--tree-col-size) var(--tree-col-gap));
+    grid-template-rows: 1fr var(--line-size) 1fr;
+    height: var(--tree-row-gap);
+}
+
+.line-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-line {
+    height: 100%;
+    width: var(--line-size);
+    background-color: var(--line-color);
+}
+
+.horizontal-line {
+    width: calc(100% - var(--tree-col-gap) + var(--line-size));
+    height: 100%;
+    background-color: var(--line-color);
+}
+
+
+#line-box1 {
+    grid-row: 1;
+    grid-column: 3 / 6;
+}
+
+#line-box2 {
+    grid-row: 2;
+    grid-column: 2 / 7;
+}
+
+#line-box3 {
+    grid-row: 3;
+    grid-column: 1 / 4;
+}
+
+#line-box4 {
+    grid-row: 3;
+    grid-column: 5 / 8;
 }
