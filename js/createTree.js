@@ -119,6 +119,20 @@ function createSubTree(subTreeStructure, treeContainer, linesContainer, onAdd, c
 
         nodeInfLineBox.appendChild(nodeInfLine)
         inferiorLineRow.appendChild(nodeInfLineBox)
+
+        // Criação das linhas horizontais
+        const nodeHorLineBox = document.createElement('div')
+        nodeHorLineBox.classList.add('line-box')
+        nodeHorLineBox.style.gridRow = 2
+        const firstNodeStart = ((centers[0] - 1) * 2)
+        const lastNodeEnd = ((centers[centers.length - 1] - 1) * 2) + 1
+        nodeHorLineBox.style.gridColumn = `${firstNodeStart} / ${lastNodeEnd}`
+
+        const nodeHorLine = document.createElement('div')
+        nodeHorLine.classList.add('horizontal-line')
+
+        nodeHorLineBox.appendChild(nodeHorLine)
+        inferiorLineRow.appendChild(nodeHorLineBox)
     }
 
     treeContainer.appendChild(node)
