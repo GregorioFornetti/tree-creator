@@ -43,6 +43,8 @@
 .node {
     background-color: black;
     aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #node1 {

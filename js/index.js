@@ -5,25 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const world = document.getElementById('world')
 
-    const treeStructure = [
-        [
-            [
-                [],
-                [],
-                [],
-                [],
-                [],
-                []
-            ],
-            []
-        ],
-        [
-            [],
-            []
-        ]
-    ]
+    const treeStructure = []
 
-    const tree = createTree(treeStructure)
+    const onAdd = () => {
+        world.innerHTML = ''
+        const tree = createTree(treeStructure, onAdd)
+        world.appendChild(tree)
+    }
+
+    const tree = createTree(treeStructure, onAdd)
 
     world.appendChild(tree)
 })

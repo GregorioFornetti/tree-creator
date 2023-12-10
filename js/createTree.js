@@ -2,26 +2,30 @@
 const nodeColSize = 2  // Usar números pares apenas
 
 
-export default function createTree(treeStructure) {
+export default function createTree(treeStructure, onAdd) {
     const treeContainer = document.createElement('div')
     treeContainer.id = 'tree'
 
-    const [treeSize, _] = createSubTree(treeStructure, treeContainer, 1, 1)
+    const [treeSize, _] = createSubTree(treeStructure, treeContainer, onAdd, 1, 1)
 
     treeContainer.style.gridTemplateColumns = `repeat(${treeSize}, var(--tree-col-size))`
 
     return treeContainer
 }
 
-function createSubTree(subTreeStructure, treeContainer, currentRow, startCol) {
+function createSubTree(subTreeStructure, treeContainer, onAdd, currentRow, startCol) {
     const node = document.createElement('div')
     node.classList.add('node')
     node.style.gridRow = currentRow
+    node.addEventListener('click', () => {
+        subTreeStructure.push([])
+        onAdd()
+    })
 
     let currentSize = 0
     const centers = []
     for (const subTree of subTreeStructure) {
-        const [subTreeSize, nodeCenter] = createSubTree(subTree, treeContainer, currentRow + 1, startCol + currentSize)
+        const [subTreeSize, nodeCenter] = createSubTree(subTree, treeContainer, onAdd, currentRow + 1, startCol + currentSize)
         centers.push(nodeCenter)
         currentSize += subTreeSize
     }
