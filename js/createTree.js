@@ -86,6 +86,41 @@ function createSubTree(subTreeStructure, treeContainer, linesContainer, onAdd, c
         superiorLineRow.appendChild(nodeSupLineBox)
     }
 
+    if (centers.length !== 0) {
+        // Criação das linhas verticas abaixo do nó
+        let inferiorLineRow = linesContainer.querySelector(`#line-${currentRow}`)
+        if (!inferiorLineRow) {
+            inferiorLineRow = document.createElement('div')
+            inferiorLineRow.id = `line-${currentRow}`
+            inferiorLineRow.classList.add('line-row')
+            inferiorLineRow.dataset.row = currentRow
+
+            let added = false
+            for (let lineRow of linesContainer.children) {
+                if (parseInt(lineRow.dataset.row) > currentRow) {
+                    linesContainer.insertBefore(inferiorLineRow, lineRow)
+                    added = true
+                    break
+                }
+            }
+
+            if (!added) {
+                linesContainer.appendChild(inferiorLineRow)
+            }
+        }
+
+        const nodeInfLineBox = document.createElement('div')
+        nodeInfLineBox.classList.add('line-box')
+        nodeInfLineBox.style.gridRow = 1
+        nodeInfLineBox.style.gridColumn = `${((centersMean - 1) * 2) - 1} / span ${nodeColSize + 1}`
+
+        const nodeInfLine = document.createElement('div')
+        nodeInfLine.classList.add('vertical-line')
+
+        nodeInfLineBox.appendChild(nodeInfLine)
+        inferiorLineRow.appendChild(nodeInfLineBox)
+    }
+
     treeContainer.appendChild(node)
     return [currentSize, centersMean]
 }
