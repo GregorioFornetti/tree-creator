@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const ele = document.getElementById('container');
     ele.style.cursor = 'grab';
 
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    let pos = { top: 100, left: 100, x: 0, y: 0 };
 
     const mouseDownHandler = function (e) {
         ele.style.cursor = 'grabbing';
