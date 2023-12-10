@@ -14,8 +14,13 @@
 }
 
 #world {
-    width: 200vw;
-    height: 200vh;
+    width: fit-content;
+    height: fit-content;
+
+    min-width: 200vw;
+    min-height: 200vh;
+
+    padding: 500px;
 
     display: flex;
     align-items: center;
